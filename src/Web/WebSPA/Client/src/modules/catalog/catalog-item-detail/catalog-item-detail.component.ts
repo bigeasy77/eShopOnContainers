@@ -9,7 +9,7 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './catalog-item-detail.component.html'
 })
 export class CatalogItemDetailComponent implements OnInit {
-    public order: ICatalogItem = <ICatalogItem>{};
+    public item: ICatalogItem = <ICatalogItem>{};
 
     constructor(private service: CatalogService, private route: ActivatedRoute) { }
 
