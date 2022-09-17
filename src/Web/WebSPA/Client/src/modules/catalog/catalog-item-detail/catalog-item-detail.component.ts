@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CatalogService } from '../catalog.service';
 import { ICatalogItem } from '../../shared/models/catalogItem.model';
 import { ActivatedRoute } from '@angular/router';
+import { ConfigurationService } from 'modules/shared/services/configuration.service';
 
 @Component({
     selector: 'esh-catalog_item-detail .esh-catalog_item-detail .mb-5',
@@ -11,20 +12,31 @@ import { ActivatedRoute } from '@angular/router';
 export class CatalogItemDetailComponent implements OnInit {
     public item: ICatalogItem = <ICatalogItem>{};
 
-    constructor(private service: CatalogService, private route: ActivatedRoute) { }
+    constructor(private service: CatalogService,  private configurationService: ConfigurationService, private route: ActivatedRoute) { }
 
     ngOnInit() {
-        this.route.params.subscribe(params => {
-            let id = +params['id']; // (+) converts string 'id' to a number
-           // this.getOrder(id);
-        });
+        // Configuration Settings:
+        if (this.configurationService.isReady) 
+            this.loadData();
+        else
+            this.configurationService.settingsLoaded$.subscribe(x => {
+                this.loadData();
+            });
     }
 
-   /* getOrder(id: number) {
-        this.service.getCatalog().subscribe(order => {
-            this.order = order;
-            console.log('order retrieved: ' + order.ordernumber);
-            console.log(this.order);
+    loadData() {
+        this.route.params.subscribe(params => {
+            let id = +params['id']; // (+) converts string 'id' to a number
+            this.getItem(id);
         });
-    } */
+
+    }
+
+    getItem(id: number) {
+        this.service.getItem(id).subscribe(item => {
+            this.item = item;
+            console.log('Item retrieved: ' + item.id);
+            console.log(this.item);
+        });
+    }
 }

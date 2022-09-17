@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
 import { ConfigurationService } from '../shared/services/configuration.service';
 import { ICatalog } from '../shared/models/catalog.model';
+import { ICatalogItem } from '../shared/models/catalogItem.model';
 import { ICatalogBrand } from '../shared/models/catalogBrand.model';
 import { ICatalogType } from '../shared/models/catalogType.model';
 
@@ -36,6 +37,14 @@ export class CatalogService {
         url = url + '?pageIndex=' + pageIndex + '&pageSize=' + pageSize;
 
         return this.service.get(url).pipe<ICatalog>(tap((response: any) => {
+            return response;
+        }));
+    }
+
+    getItem(id: number): Observable<ICatalogItem> {
+        let url = this.catalogUrl + '/' + id;
+
+        return this.service.get(url).pipe<ICatalogItem>(tap((response: any) => {
             return response;
         }));
     }
