@@ -5,11 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ConfigurationService } from 'modules/shared/services/configuration.service';
 
 @Component({
-    selector: 'esh-catalog_item-detail .esh-catalog_item-detail .mb-5',
-    styleUrls: ['./catalog-item-detail.component.scss'],
-    templateUrl: './catalog-item-detail.component.html'
+    selector: 'esh-catalog_item .esh-catalog_item .mb-5',
+    styleUrls: ['./catalog-item.component.scss'],
+    templateUrl: './catalog-item.component.html'
 })
-export class CatalogItemDetailComponent implements OnInit {
+export class CatalogItemComponent implements OnInit {
     public item: ICatalogItem = <ICatalogItem>{};
 
     constructor(private service: CatalogService,  private configurationService: ConfigurationService, private route: ActivatedRoute) { }
