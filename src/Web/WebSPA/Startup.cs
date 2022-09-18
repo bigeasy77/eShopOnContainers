@@ -130,7 +130,7 @@ public class Startup
             { 
 
                 // use the SpaServices extension method for angular, that will make the application to run "ng serve" for us, when in development.
-                spa.UseAngularCliServer(npmScript: "start");
+                // spa.UseAngularCliServer(npmScript: "start");
             }
         });
     }
