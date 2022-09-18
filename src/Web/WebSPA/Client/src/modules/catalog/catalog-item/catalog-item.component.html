@@ -2,19 +2,16 @@
     <div class="container">
         <h1 class="mb-4 mt-5">[ Item Details ]</h1>
         <div class="u-background-brightest p-5">
-            <article class="esh-catalog_item-titles row">
-                <section class="col-3">Item ID</section>
-                <section class="col-3">Name</section>
-            </article>
-
             <article class="esh-catalog_item-items row">
-                <section class="col-3">{{item.id}}</section>
                 <section class="col-3">{{item.name}}</section>
             </article>
 
+            <img class="esh-catalog-thumbnail" src="{{item.pictureUri}}" />
             <h2 class="esh-catalog_item-title mt-5">Description</h2>
             <div class="u-mb-5">{{item.description}}</div>
-
+            <div class="esh-catalog_item-price mr-3">
+                <span>{{item.price | number:'1.2-2'}}</span>
+            </div>
             <aside class="d-flex justify-content-end mt-5">
                 <button class="btn btn-primary" (click)="addToCart(item)">Add To Cart</button>
             </aside>
