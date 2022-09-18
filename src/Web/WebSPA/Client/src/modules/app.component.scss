@@ -23,6 +23,7 @@
 
             .esh-app-header-promo {
                 opacity: 1;
+                width: 100%;
             }
         }
     }
@@ -38,7 +39,7 @@
         position: absolute;
         text-align: center;
         transition: all $animation-speed-default;
-        width: 100%;
+        width: 0%;
     }
 
     &-header-promo-title {
