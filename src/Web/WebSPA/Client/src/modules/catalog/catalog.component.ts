@@ -80,13 +80,6 @@ export class CatalogComponent implements OnInit {
         this.getCatalog(this.paginationInfo.itemsPage, value);
     }
 
-    addToCart(item: ICatalogItem) {
-        if (!this.authenticated) {
-            return;
-        }
-        this.basketService.addItemToBasket(item);
-    }
-
     getCatalog(pageSize: number, pageIndex: number, brand?: number, type?: number) {
         this.errorReceived = false;
         this.service.getCatalog(pageIndex, pageSize, brand, type)
